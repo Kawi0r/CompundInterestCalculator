@@ -35,10 +35,12 @@ public class CompoundInterestCalc {
     }
 
     private static void detailedBalance(String principal, String rate, int period, String contribution) throws ParseException {
+        System.out.println("Your investment from year to year: ");
         for (int i = 0; i < (period + 1); i++) {
             BigDecimal balance = CompoundInterestCalc.calculate(principal, rate, i, contribution);
             System.out.println("Year " + i + ", balance: " + moneyFormatter.format(balance));
         }
+        System.out.println("\n");
     }
 
     public static void main(String[] args) throws ParseException {
