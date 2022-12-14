@@ -32,5 +32,7 @@ public class CompoundInterestCalc {
 
         // detailed balance, on every year of investment
         CalculatingMethods.detailedBalance(principal, rate, period, contribution);
+
+//        IOFilesMethods.creatingTxtReportFile(principal, rate, period, contribution);
     }
 }
