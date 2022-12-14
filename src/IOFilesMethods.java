@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class IOFilesMethods {
@@ -6,6 +7,7 @@ public class IOFilesMethods {
 
     public static void creatingTxtReport(String principal, String rate, int period, String contribution) {
         String report = """
+            test
             """;
 
         File fileToCheck = new File("Reports/report.txt");
@@ -25,6 +27,22 @@ public class IOFilesMethods {
             }
         } else {
             System.out.println("File already exists!");
+        }
+
+        // checking if file exists to be able to write in to file
+        if (!fileToCheck.exists()) {
+            System.out.println("File does not exists!");
+        } else {
+            // writing in to the file String report
+            try {
+                FileWriter myWriter = new FileWriter("Reports/report.txt");
+                myWriter.write(report);
+                myWriter.close();
+                System.out.println("File writing successful");
+            } catch (IOException e) {
+                System.out.println("Error");
+                e.printStackTrace();
+            }
         }
 
 
