@@ -38,15 +38,24 @@ public class IOFilesMethods {
                                 
                 Interest profit is:\s""" +
                 formatPeriodProfit + "\n" +
-                "---------------------------------------------------";
+                "---------------------------------------------------\n";
 
-
-//        String yearByYearReport = new String();
-//        for (int i = 0; i < (period + 1); i++) {
-//        }
+        // creating String block, and iterate through each year to show how the investment has progressed
+        StringBuilder yearByYearReport = new StringBuilder();
+        for (int i = 0; i < (period + 1); i++) {
+            BigDecimal calculate = CalculatingMethods.calculate(principal, rate, i, contribution);
+            String calculateFormat = CalculatingMethods.moneyFormatter.format(calculate);
+            yearByYearReport
+                    .append("Year:\s")
+                    .append(i).append(": ")
+                    .append(calculateFormat)
+                    .append("\n");
+        }
 
         String report = initialReport +
-                reportProfit;
+                reportProfit +
+                yearByYearReport +
+                "---------------------------------------------------";
 
         File fileToCheck = new File("Reports/report.txt");
         if (!fileToCheck.exists()) {
