@@ -6,9 +6,19 @@ public class IOFilesMethods {
     // in this class I will create methods to create report document to text file or spreadsheet document
 
     public static void creatingTxtReport(String principal, String rate, int period, String contribution) {
-        String report = """
-            test
-            """;
+
+        // Creating String block for report
+        String report = new StringBuilder().append("""
+                Inputs:
+                Initial investment:\s""").append(principal).append("""
+                            
+                Annual contribution:\s""").append(contribution).append("""
+                            
+                Annual rate:\s""").append(rate).append(", ").append(period).append(" years of investment.").toString();
+
+//        String yearByYearReport = new String();
+//        for (int i = 0; i < (period + 1); i++) {
+//        }
 
         File fileToCheck = new File("Reports/report.txt");
         if (!fileToCheck.exists()) {
@@ -44,10 +54,6 @@ public class IOFilesMethods {
                 e.printStackTrace();
             }
         }
-
-
-
-        // checking if file exists to be able to write to it
     }
 
 }
